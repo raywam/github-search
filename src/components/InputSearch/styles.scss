@@ -1,0 +1,26 @@
+.Search-Input {
+  width: 650px;
+  height: 50px;
+
+  background-color: var(--white);
+}
+
+button {
+  position: relative;
+  top: 12px;
+  left: -2px;
+
+  width: 100px;
+  height: 50px;
+  border-radius: 2px;
+
+  background-color: var(--lighter-purple);
+}
+
+.Search-Icon {
+  width: 30px;
+  height: 30.1px;
+  box-shadow: 0 0 4px NaNpx var(--black-40);
+
+  background-color: var(--white);
+}
