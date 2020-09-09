@@ -2,10 +2,14 @@
   "name": "github-search",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "jest": "^19.0.2"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.20.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -16,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test-jest": "jest"
   },
   "eslintConfig": {
     "extends": "react-app"
