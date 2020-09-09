@@ -18,7 +18,7 @@ function CardRepository(props) {
           <div className="star">
             <img src={starIcon} className="star-icon" alt="Icone de Estrela" />
             <div className="star-count">
-              {repo.forks_count}
+              {repo.stargazers_count}
             </div>
           </div>
         </div>

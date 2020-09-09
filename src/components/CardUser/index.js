@@ -2,6 +2,11 @@ import './styles.scss';
 
 import React from 'react';
 
+import OrganizationIcon from '../../assets/icons/organization-icon.svg';
+import LocationIcon from '../../assets/icons/location-icon.svg';
+import StarIcon from '../../assets/icons/star-icon.svg';
+import RepositorieIcon from '../../assets/icons/repositorie-icon.svg';
+import FollowersIcon from '../../assets/icons/followers-icon.svg';
 
 function CardUser(props) {
   return (
@@ -16,19 +21,24 @@ function CardUser(props) {
 
       <div className="Details">
         <div className="Git-details">
-          {props.userData.company}
+          <img src={OrganizationIcon} className="Git-details-icon" alt="Icone de Organização" />
+          <span className="Git-details-value">{props.userData.company}</span>
         </div>
         <div className="Git-details">
-          {props.userData.location}
+          <img src={LocationIcon} className="Git-details-icon" alt="Icone de Localização" />
+          <span className="Git-details-value">{props.userData.location}</span>
         </div>
         <div className="Git-details">
-          {props.userData.public_gists}
+          <img src={StarIcon} className="Git-details-icon" alt="Icone de Estrela" />
+          <span className="Git-details-value">{props.userData.public_gists}</span>
         </div>
         <div className="Git-details">
-          {props.userData.public_repos}
+          <img src={RepositorieIcon} className="Git-details-icon" alt="Icone de Repository" />
+          <span className="Git-details-value">{props.userData.public_repos}</span>
         </div>
         <div className="Git-details">
-          {props.userData.followers}
+          <img src={FollowersIcon} className="Git-details-icon" alt="Icone de Followers" />
+          <span className="Git-details-value">{props.userData.followers}</span>
         </div>
       </div>
     </div>

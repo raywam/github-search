@@ -8,13 +8,16 @@ import CardUser from '../../components/CardUser';
 import InputSearch from '../../components/InputSearch';
 import LogoApp from '../../components/LogoApp';
 
-class Results extends Component {
+export class Results extends Component {
   constructor(props) {
     super(props);
     this.state = { user: null, repos: null, showUser: false };
 
     this.getUser = this.getUser.bind(this);
-    this.getLocationSearch();
+
+    if (this.props.location && this.props.location.search) {
+      this.getLocationSearch(this.props.location.search);
+    }
   }
 
   getUser(username) {
@@ -22,20 +25,29 @@ class Results extends Component {
       axios.get(`https://api.github.com/users/${username}`),
       axios.get(`https://api.github.com/users/${username}/repos`)
     ]).then(([userResponse, reposResponse]) => {
-      this.setState({ user: userResponse.data, repos: reposResponse.data, showUser: true });
+      this.setState({
+        user: userResponse.data,
+        repos: this.orderByStargazers(reposResponse.data),
+        showUser: true
+      });
     }).catch(error => this.setState({ user: '', repos: [], showUser: false }));
   }
 
-  getLocationSearch() {
-    const locationSearch = this.props.location.search;
+  orderByStargazers(repos) {
+    return repos.sort((a, b) => (a.stargazers_count > b.stargazers_count) ? -1 : 1)
+  }
 
+  getLocationSearch(locationSearch) {
     if (locationSearch) {
       const username = locationSearch.split('=')[1];
 
       if (username) {
         this.getUser(username);
+        return username;
       }
     }
+
+    return '';
   }
 
   render() {
@@ -45,7 +57,7 @@ class Results extends Component {
           <LogoApp width="200px" textAlign="left" fontSize="40px"></LogoApp>
         </div>
         <div>
-          <InputSearch float="right" sendData={this.getUser}></InputSearch>
+          <InputSearch sendData={this.getUser}></InputSearch>
         </div>
         {
           this.state.user
@@ -64,7 +76,4 @@ class Results extends Component {
       </div>
     )
   }
-
 }
-
-export default Results;

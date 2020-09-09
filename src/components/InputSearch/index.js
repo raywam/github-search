@@ -8,9 +8,6 @@ class InputSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
-    this.inputStyle = {
-      float: props.float
-    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +19,6 @@ class InputSearch extends React.Component {
 
   handleSubmit(event) {
     this.props.sendData(this.state.value);
-    this.setState({ value: '' });
     event.preventDefault();
   }
 
