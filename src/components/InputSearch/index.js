@@ -47,7 +47,6 @@ class InputSearch extends React.Component {
             <img src={SearchIcon} alt="Icone de Pequisa" />
           </button>
         </div>
-        {this.state.username}
       </form>
     )
   }

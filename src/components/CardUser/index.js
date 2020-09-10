@@ -12,6 +12,7 @@ function CardUser(props) {
   return (
     <div className="Card-user">
       <img className="user-avatar" src={props.userData.avatar_url} alt="Foto do Perfil" />
+      <br />
       <a className="user-name" target="_blank" rel="noopener noreferrer" href={props.userData.html_url}>{props.userData.name}</a>
       <div className="user-login">
         {props.userData.login || '-'}
