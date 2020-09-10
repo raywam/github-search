@@ -18,13 +18,20 @@ class InputSearch extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.username !== prevProps.username) {
+      this.setState({ value: this.props.username })
+    }
+  }
+
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
     if (this.state.value) {
-      if (this.props.sendData) {
+      console.log('sendData', this.props)
+      if (this.props && this.props.sendData) {
         this.props.sendData(this.state.value);
       }
 
@@ -35,7 +42,6 @@ class InputSearch extends React.Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      this.setState({ redirect: false });
       return <Redirect to={{ pathname: '/results', search: `?user=${this.state.value}` }} />
     }
   }

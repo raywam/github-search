@@ -9,7 +9,7 @@ class Home extends React.Component {
     return (
       <div className="Home">
         <LogoApp></LogoApp>
-        <InputSearch width="55%"></InputSearch>
+        <InputSearch width="55%" username={''}></InputSearch>
       </div>
     )
   }
