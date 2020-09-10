@@ -14,7 +14,9 @@ export class Results extends Component {
     this.state = { user: '', repos: [], showUser: 'SEARCHING', username: '' };
 
     this.getUser = this.getUser.bind(this);
+  }
 
+  componentDidMount() {
     if (this.props.location && this.props.location.search) {
       this.getLocationSearch(this.props.location.search);
     }
@@ -81,7 +83,7 @@ export class Results extends Component {
           <LogoApp width="200px" height="50px" textAlign="left" fontSize="40px"></LogoApp>
         </div>
         <div>
-          <InputSearch sendData={this.getUser} username={this.state.username}></InputSearch>
+          <InputSearch sendData={this.getUser.bind(this)} username={this.state.username}></InputSearch>
         </div>
         {
           this.state.showUser === 'YES'
