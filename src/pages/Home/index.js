@@ -1,14 +1,18 @@
 import './styles.scss';
 
 import React from 'react';
+import InputSearch from '../../components/InputSearch';
+import LogoApp from '../../components/LogoApp';
 
-
-function Home() {
-  return (
-    <div>
-      Home Works
-    </div>
-  )
+class Home extends React.Component {
+  render() {
+    return (
+      <div className="Home">
+        <LogoApp></LogoApp>
+        <InputSearch width="55%"></InputSearch>
+      </div>
+    )
+  }
 }
 
 export default Home;

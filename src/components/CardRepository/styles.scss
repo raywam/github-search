@@ -1,0 +1,65 @@
+.Card-repository + .Card-repository{
+  padding: 15px 0;
+  margin: 10px 0;
+}
+
+.Card-repository {
+
+  .repo-name {
+    font-family: Raleway;
+    font-size: 35px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--lighter-purple);
+
+    text-decoration: none;
+  }
+
+  .repo-description {
+    font-family: Raleway;
+    font-size: 20px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+  }
+
+  .star {
+    display: flex;
+
+    .star-icon {
+      width: 25.5px;
+      height: 24.5px;
+    }
+
+    .star-count {
+      height: 22.4px;
+      font-family: Raleway;
+      font-size: 20px;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #5c5c5c;
+      padding-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .Card-repository {
+    .repo-name {
+      font-size: 16px;
+    }
+
+    .repo-description {
+      font-size: 14px;
+    }
+  }
+}
