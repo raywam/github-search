@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 function LogoApp(props) {
   const buttonStyle = {
     width: props.width,
+    height: props.height,
     textAlign: props.textAlign,
     fontSize: props.fontSize
   };

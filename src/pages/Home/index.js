@@ -14,7 +14,6 @@ class Home extends React.Component {
   }
 
   getUser(username) {
-    console.log(username);
     this.setState({
       redirect: true,
       username: username

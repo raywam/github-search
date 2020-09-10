@@ -1,9 +1,10 @@
 .Search-Input {
-  width: 650px;
+  width: 85%;
   height: 50px;
   padding-left: 14px;
 
   background-color: var(--white);
+  border: 2px solid var(--black-40);
 }
 
 button {
@@ -16,6 +17,7 @@ button {
   border-radius: 2px;
 
   background-color: var(--lighter-purple);
+  border: 5px solid var(--lighter-purple);
 }
 
 .Search-Icon {

@@ -7,8 +7,8 @@ import starIcon from '../../assets/icons/star-icon.svg';
 function CardRepository(props) {
   return (
     <div>
-      {props.reposData.map((repo, index) => (
-        <div className="Card-repository" key={index}>
+      {props.reposData.map(repo => (
+        <div className="Card-repository" key={repo.id}>
           <div className="repo-name">
             {repo.name}
           </div>

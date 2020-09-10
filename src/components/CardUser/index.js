@@ -22,23 +22,23 @@ function CardUser(props) {
       <div className="Details">
         <div className="Git-details">
           <img src={OrganizationIcon} className="Git-details-icon" alt="Icone de Organização" />
-          <span className="Git-details-value">{props.userData.company}</span>
+          <span className="Git-details-value">{props.userData.company || '-'}</span>
         </div>
         <div className="Git-details">
           <img src={LocationIcon} className="Git-details-icon" alt="Icone de Localização" />
-          <span className="Git-details-value">{props.userData.location}</span>
+          <span className="Git-details-value">{props.userData.location || '-'}</span>
         </div>
         <div className="Git-details">
           <img src={StarIcon} className="Git-details-icon" alt="Icone de Estrela" />
-          <span className="Git-details-value">{props.userData.public_gists}</span>
+          <span className="Git-details-value">{props.userData.public_gists || '-'}</span>
         </div>
         <div className="Git-details">
           <img src={RepositorieIcon} className="Git-details-icon" alt="Icone de Repository" />
-          <span className="Git-details-value">{props.userData.public_repos}</span>
+          <span className="Git-details-value">{props.userData.public_repos || '-'}</span>
         </div>
         <div className="Git-details">
           <img src={FollowersIcon} className="Git-details-icon" alt="Icone de Followers" />
-          <span className="Git-details-value">{props.userData.followers}</span>
+          <span className="Git-details-value">{props.userData.followers || '-'}</span>
         </div>
       </div>
     </div>

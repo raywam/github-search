@@ -26,11 +26,12 @@ class InputSearch extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="Search-Input-Component">
-          <input className="Search-Input" type="text" value={this.state.value} onChange={this.handleChange}></input>
+          <input className="Search-Input" type="text" maxLength="50" value={this.state.value || this.props.username || ''} onChange={this.handleChange.bind(this)}></input>
           <button>
             <img src={SearchIcon} alt="Icone de Pequisa" />
           </button>
         </div>
+        {this.state.username}
       </form>
     )
   }

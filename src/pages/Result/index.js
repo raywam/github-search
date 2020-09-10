@@ -11,7 +11,7 @@ import LogoApp from '../../components/LogoApp';
 export class Results extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: null, repos: null, showUser: false };
+    this.state = { user: null, repos: null, showUser: 'SEARCHING', username: '' };
 
     this.getUser = this.getUser.bind(this);
 
@@ -21,6 +21,8 @@ export class Results extends Component {
   }
 
   getUser(username) {
+    this.setState({ showUser: 'SEARCHING' });
+
     Promise.all([
       axios.get(`https://api.github.com/users/${username}`),
       axios.get(`https://api.github.com/users/${username}/repos`)
@@ -28,13 +30,15 @@ export class Results extends Component {
       this.setState({
         user: userResponse.data,
         repos: this.orderByStargazers(reposResponse.data),
-        showUser: true
+        showUser: 'YES',
+        username: username
       });
-    }).catch(error => this.setState({ user: '', repos: [], showUser: false }));
+
+    }).catch(error => this.setState({ user: '', repos: [], showUser: 'NO' }));
   }
 
   orderByStargazers(repos) {
-    return repos.sort((a, b) => (a.stargazers_count > b.stargazers_count) ? -1 : 1)
+    return repos.sort((a, b) => (a.stargazers_count > b.stargazers_count) ? -1 : 1);
   }
 
   getLocationSearch(locationSearch) {
@@ -54,10 +58,10 @@ export class Results extends Component {
     return (
       <div className="Results-page">
         <div className="grid-item">
-          <LogoApp width="200px" textAlign="left" fontSize="40px"></LogoApp>
+          <LogoApp width="200px" height="50px" textAlign="left" fontSize="40px"></LogoApp>
         </div>
         <div>
-          <InputSearch sendData={this.getUser}></InputSearch>
+          <InputSearch sendData={this.getUser} username={this.state.username}></InputSearch>
         </div>
         {
           this.state.user
@@ -67,11 +71,26 @@ export class Results extends Component {
             : <span></span>
         }
         {
-          this.state.showUser && this.state.repos.length > 0
-            ? <div className="grid-item">
-              <CardRepository reposData={this.state.repos}></CardRepository>
-            </div>
-            : <span className="Not-found-message">{'User not found :('}</span>
+          this.state.showUser === 'YES' && this.state.repos.length > 0 &&
+          <div className="grid-item">
+            <CardRepository reposData={this.state.repos}></CardRepository>
+          </div>
+        }
+        {
+          this.state.showUser === 'YES' && this.state.repos.length === 0 &&
+          <span className="Not-found-message">This organization has no public repositories.</span>
+        }
+        {
+          this.state.showUser === 'NO' && (
+            <span></span>,
+            <span className="Not-found-message">{'User not found :('}</span>
+          )
+        }
+        {
+          this.state.showUser === 'SEARCHING' && (
+            <span></span>,
+            <span className="Not-found-message">{'Searching...'}</span>
+          )
         }
       </div>
     )
