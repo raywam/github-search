@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
 import { Results } from './pages/Result';
 
@@ -9,6 +9,7 @@ function Routes() {
     <BrowserRouter>
       <Route path="/" exact component={Home} />
       <Route path="/results" component={Results} />
+      <Redirect to="/" />
     </BrowserRouter>
   )
 }
