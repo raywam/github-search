@@ -9,9 +9,7 @@ function CardRepository(props) {
     <div>
       {props.reposData.map(repo => (
         <div className="Card-repository" key={repo.id}>
-          <div className="repo-name">
-            {repo.name}
-          </div>
+          <a className="repo-name" target="_blank" rel="noopener noreferrer" href={repo.svn_url}>{repo.name}</a>
           <div className="repo-description">
             {repo.description}
           </div>
