@@ -15,16 +15,18 @@ class InputSearch extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
-    if (this.props.sendData) {
-      this.props.sendData(this.state.value);
-    }
+    console.log(this.state.value);
+    if (this.state.value) {
+      if (this.props.sendData) {
+        this.props.sendData(this.state.value);
+      }
 
-    this.setState({ redirect: true });
+      this.setState({ redirect: true });
+    }
     event.preventDefault();
   }
 

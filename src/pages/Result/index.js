@@ -21,20 +21,22 @@ export class Results extends Component {
   }
 
   getUser(username) {
-    this.setState({ showUser: 'SEARCHING' });
+    if (username) {
+      this.setState({ showUser: 'SEARCHING' });
 
-    Promise.all([
-      axios.get(`https://api.github.com/users/${username}`),
-      axios.get(`https://api.github.com/users/${username}/repos`)
-    ]).then(([userResponse, reposResponse]) => {
-      this.setState({
-        user: userResponse.data,
-        repos: this.orderByStargazers(reposResponse.data),
-        showUser: 'YES',
-        username: username
-      });
+      Promise.all([
+        axios.get(`https://api.github.com/users/${username}`),
+        axios.get(`https://api.github.com/users/${username}/repos`)
+      ]).then(([userResponse, reposResponse]) => {
+        this.setState({
+          user: userResponse.data,
+          repos: this.orderByStargazers(reposResponse.data),
+          showUser: 'YES',
+          username: username
+        });
 
-    }).catch(error => this.setState({ user: '', repos: [], showUser: 'NO' }));
+      }).catch(error => this.setState({ user: '', repos: [], showUser: 'NO' }));
+    }
   }
 
   orderByStargazers(repos) {
@@ -52,6 +54,24 @@ export class Results extends Component {
     }
 
     return '';
+  }
+
+  getMsgInfo() {
+    if (this.state.showUser === 'YES' && this.state.repos.length === 0) {
+      return (
+        <span className="Not-found-message">This organization has no public repositories.</span>
+      )
+    } else if (this.state.showUser === 'NO') {
+      return (
+        <span></span>,
+        <span className="Not-found-message">{'User not found :('}</span>
+      )
+    } else if (this.state.showUser === 'SEARCHING') {
+      return (
+        <span></span>,
+        <span className="Not-found-message">{'Searching...'}</span>
+      )
+    }
   }
 
   render() {
@@ -76,22 +96,7 @@ export class Results extends Component {
             <CardRepository reposData={this.state.repos}></CardRepository>
           </div>
         }
-        {
-          this.state.showUser === 'YES' && this.state.repos.length === 0 &&
-          <span className="Not-found-message">This organization has no public repositories.</span>
-        }
-        {
-          this.state.showUser === 'NO' && (
-            <span></span>,
-            <span className="Not-found-message">{'User not found :('}</span>
-          )
-        }
-        {
-          this.state.showUser === 'SEARCHING' && (
-            <span></span>,
-            <span className="Not-found-message">{'Searching...'}</span>
-          )
-        }
+        {this.getMsgInfo()}
       </div>
     )
   }
