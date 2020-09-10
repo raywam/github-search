@@ -64,7 +64,7 @@ export class Results extends Component {
           <InputSearch sendData={this.getUser} username={this.state.username}></InputSearch>
         </div>
         {
-          this.state.user
+          this.state.showUser === 'YES'
             ? <div className="grid-item">
               <CardUser userData={this.state.user}></CardUser>
             </div>
