@@ -17,6 +17,12 @@ function CardUser(props) {
       <div className="user-login">
         {props.userData.login || '-'}
       </div>
+      <div >
+        {props.userData.bio || '-'}
+      </div>
+      <div>
+        E-mail: {props.userData.email || 'no e-mail'}
+      </div>
 
       <div className="Details">
         <div className="Git-details">
@@ -37,7 +43,11 @@ function CardUser(props) {
         </div>
         <div className="Git-details">
           <img src={FollowersIcon} className="Git-details-icon" alt="Icone de Followers" />
-          <span className="Git-details-value">{props.userData.followers || '-'}</span>
+          <span className="Git-details-value">Followers: {props.userData.followers || '-'}</span>
+        </div>
+        <div className="Git-details">
+          <img src={FollowersIcon} className="Git-details-icon" alt="Icone de Followers" />
+          <span className="Git-details-value">Following: {props.userData.following || '-'}</span>
         </div>
       </div>
     </div>

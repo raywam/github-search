@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom';
 class InputSearch extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: null, redirect: false };
+    this.state = { value: '', redirect: false };
 
     this.inputStyle = {
       width: props.width
@@ -23,7 +23,6 @@ class InputSearch extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log(this.state.value);
     if (this.state.value) {
       if (this.props.sendData) {
         this.props.sendData(this.state.value);
@@ -43,10 +42,10 @@ class InputSearch extends React.Component {
 
   render() {
     return (
-      <form className="form-search" style={this.inputStyle} onSubmit={this.handleSubmit}>
+      <form className="form-search" style={this.inputStyle} onSubmit={this.handleSubmit.bind(this)}>
         {this.renderRedirect()}
         <div className="Search-Input-Component">
-          <input className="Search-Input" type="text" maxLength="50" value={this.state.value !== null ? this.state.value : this.props.username} onChange={this.handleChange.bind(this)}></input>
+          <input className="Search-Input" type="text" maxLength="50" value={this.state.value} onChange={this.handleChange.bind(this)}></input>
           <button>
             <img src={SearchIcon} alt="Icone de Pequisa" />
           </button>

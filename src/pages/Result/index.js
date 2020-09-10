@@ -11,7 +11,7 @@ import LogoApp from '../../components/LogoApp';
 export class Results extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: null, repos: null, showUser: 'SEARCHING', username: '' };
+    this.state = { user: '', repos: [], showUser: 'SEARCHING', username: '' };
 
     this.getUser = this.getUser.bind(this);
 
