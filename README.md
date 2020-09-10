@@ -35,10 +35,10 @@ Foi utilizada a versão 3, RESTful do Github:
 
 ### App.test.js
 
-Para verficação se o component é renderizado corretamente.
+* Para verficação se o component é renderizado corretamente.
 
 ### Result.test.js
 
-Para verificação se o component é renderizado corretamente.
-Para verificação se a função `getLocationSearch` retorna o username do usuário da query url corretamente.
-Para verificação se a função `orderByStargazers` ordena os repositories descrecentemente.
+* Para verificação se o component é renderizado corretamente.
+* Para verificação se a função `getLocationSearch` retorna o username do usuário da query url corretamente.
+* Para verificação se a função `orderByStargazers` ordena os repositories descrecentemente.
