@@ -8,10 +8,8 @@ class Home extends React.Component {
   render() {
     return (
       <div className="Home">
-        <div>
-          <LogoApp></LogoApp>
-          <InputSearch></InputSearch>
-        </div>
+        <LogoApp></LogoApp>
+        <InputSearch width="55%"></InputSearch>
       </div>
     )
   }

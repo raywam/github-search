@@ -3,12 +3,16 @@ import './styles.scss';
 import React from 'react';
 
 import SearchIcon from '../../assets/icons/Search-Icon.svg';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class InputSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: null, redirect: false };
+
+    this.inputStyle = {
+      width: props.width
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,7 +43,7 @@ class InputSearch extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="form-search" style={this.inputStyle} onSubmit={this.handleSubmit}>
         {this.renderRedirect()}
         <div className="Search-Input-Component">
           <input className="Search-Input" type="text" maxLength="50" value={this.state.value !== null ? this.state.value : this.props.username} onChange={this.handleChange.bind(this)}></input>

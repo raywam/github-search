@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Monaco"; 
+  font-style: normal;
+  font-weight: normal;
+  src: url('../../assets/fonts/monaco.ttf');
+}
+
 .Github-Search {
   width: 745px;
   height: 81px;
@@ -13,10 +20,11 @@
   text-align: center;
 
   color: var(--black);
+}
 
-  .text-style-1 {
-    font-family: Raleway;
-    font-weight: 200;
-    font-style: italic;
-  }
+.text-style-1 {
+  @extend .Github-Search;
+  font-family: Raleway;
+  font-weight: 200;
+  font-style: italic;
 }

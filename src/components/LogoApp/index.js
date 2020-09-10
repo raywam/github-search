@@ -12,14 +12,12 @@ function LogoApp(props) {
 
   return (
     <Link to="/" style={{ textDecoration: 'none' }}>
-      <div className="Github-Search" style={buttonStyle}>
-        <span>
-          Github&nbsp;
-        </span>
-        <span className="text-style-1">
-          Search
-        </span>
-      </div>
+      <span className="Github-Search" style={buttonStyle}>
+        Github
+      </span>
+      <span className="text-style-1" style={buttonStyle}>
+        Search
+      </span>
     </Link>
   )
 }
